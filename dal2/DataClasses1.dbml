@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ccms" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7LC8E82\MSSQLSERVER01;Initial Catalog=ccms;Integrated Security=True" SettingsObjectName="dal2.Properties.Settings" SettingsPropertyName="ccmsConnectionString3" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.area" Member="areas">
+    <Type Name="area">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="area_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pin_code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="city_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="area_Kotwali" Member="Kotwalis" ThisKey="id" OtherKey="area_id" Type="Kotwali" />
+      <Association Name="area_Kotwali1" Member="Kotwalis1" ThisKey="id" OtherKey="area_id" Type="Kotwali" />
+      <Association Name="city_area" Member="city" ThisKey="city_id" OtherKey="id" Type="city" IsForeignKey="true" />
+      <Association Name="city_area1" Member="city1" ThisKey="city_id" OtherKey="id" Type="city" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.choki" Member="chokis">
+    <Type Name="choki">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="thana_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="choki_name" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Association Name="thana_choki" Member="thana" ThisKey="thana_id" OtherKey="id" Type="thana" IsForeignKey="true" />
+      <Association Name="thana_choki1" Member="thana1" ThisKey="thana_id" OtherKey="id" Type="thana" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.city" Member="cities">
+    <Type Name="city">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stateid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ct_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="city_area" Member="areas" ThisKey="id" OtherKey="city_id" Type="area" />
+      <Association Name="city_area1" Member="areas1" ThisKey="id" OtherKey="city_id" Type="area" />
+      <Association Name="state__city" Member="state_" ThisKey="stateid" OtherKey="id" Type="state_" IsForeignKey="true" />
+      <Association Name="state__city1" Member="state_1" ThisKey="stateid" OtherKey="id" Type="state_" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.complain" Member="complains">
+    <Type Name="complain">
+      <Column Name="com_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="u_name" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="contact_num" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="state_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="city_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="area_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pin_code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kotwali_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="thana_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="choki_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="com_sub" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="com_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="com_proofpic" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="com_des" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="occurence_date" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="u_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="anyaction" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="aadhar_no" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="complain_review" Member="reviews" ThisKey="com_id" OtherKey="com_id" Type="review" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employee" Member="employees">
+    <Type Name="employee">
+      <Column Name="e_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="e_name" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="email_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cotact_no" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="designation" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="pass" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="u_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="choki_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="thana_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="kotwali_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="area_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Kotwali" Member="Kotwalis">
+    <Type Name="Kotwali">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="area_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kotwali_name" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Association Name="Kotwali_thana" Member="thanas" ThisKey="id" OtherKey="kotw_id" Type="thana" />
+      <Association Name="Kotwali_thana1" Member="thanas1" ThisKey="id" OtherKey="kotw_id" Type="thana" />
+      <Association Name="area_Kotwali" Member="area" ThisKey="area_id" OtherKey="id" Type="area" IsForeignKey="true" />
+      <Association Name="area_Kotwali1" Member="area1" ThisKey="area_id" OtherKey="id" Type="area" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Login_detail" Member="Login_details">
+    <Type Name="Login_detail">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="email_id" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="mobile_No" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="pass" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="u_type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="u_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.remark" Member="remarks">
+    <Type Name="remark">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="u_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="remark" Member="remark1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="emp_id" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="com_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="u_id" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="area_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="kotwali_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="thana_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="choki_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.review" Member="reviews">
+    <Type Name="review">
+      <Column Name="r_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="com_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="full_name" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="email_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contact_no" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="r_subject" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="r_message" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="complain_review" Member="complain" ThisKey="com_id" OtherKey="com_id" Type="complain" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.state_" Member="state_s">
+    <Type Name="state_">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="state_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="country_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="state__city" Member="cities" ThisKey="id" OtherKey="stateid" Type="city" />
+      <Association Name="state__city1" Member="cities1" ThisKey="id" OtherKey="stateid" Type="city" />
+    </Type>
+  </Table>
+  <Table Name="dbo.thana" Member="thanas">
+    <Type Name="thana">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kotw_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="thana_name" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Association Name="thana_choki" Member="chokis" ThisKey="id" OtherKey="thana_id" Type="choki" />
+      <Association Name="thana_choki1" Member="chokis1" ThisKey="id" OtherKey="thana_id" Type="choki" />
+      <Association Name="Kotwali_thana" Member="Kotwali" ThisKey="kotw_id" OtherKey="id" Type="Kotwali" IsForeignKey="true" />
+      <Association Name="Kotwali_thana1" Member="Kotwali1" ThisKey="kotw_id" OtherKey="id" Type="Kotwali" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.u_profile" Member="u_profiles">
+    <Type Name="u_profile">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="u_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="p_pic" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ad_pic" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="adhar_no" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="login_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.u_registeration" Member="u_registerations">
+    <Type Name="u_registeration">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="u_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="u_name" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
+      <Column Name="u_state" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="u_city" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="email_id" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="mobile_No" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_remark" Member="user_remarks">
+    <Type Name="user_remark">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="isactive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="com_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="u_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="emp_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="area_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="kotwali_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="thana_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="choki_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

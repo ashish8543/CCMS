@@ -1,0 +1,33 @@
+.mydatagrid /** main grid */
+{
+width: 80%;
+border: solid 1px #333;
+}
+.mydatagrid td /** text element **/
+{
+padding: 5px;
+border: solid 1px #333;
+color: #000000;
+text-align: left;
+font-size: 15px;
+}
+    .mydatagrid th /**header details */ {
+        padding: 5px;
+        color: #FFFFFF;
+        background: #2a8acc;
+        border: solid 1px #333;
+        font-size: 15px;
+    }
+.mydatagrid .alt
+{
+background: #fcfcfc url(grd_alt.png) repeat-x top;
+}
+
+.mydatagrid tr:nth-child(even)
+{
+background-color: #ffffff;
+}
+.mydatagrid tr:nth-child(odd)
+{
+background-color: #cccccc;
+}
